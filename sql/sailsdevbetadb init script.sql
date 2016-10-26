@@ -17,12 +17,12 @@ create table if not exists entry
 );
 	
 -- piece table definition
-create table if not exists item
+create table if not exists piece
 (
 	id int primary key,
     name nvarchar(100),
     attachment nvarchar(150),
-    itemEntry int,
+    pieceEntry int,
     createdAt datetime,
     updatedAt datetime
 );
@@ -31,7 +31,8 @@ create table if not exists contact
 (
 	id int primary key,
     name nvarchar(100),
-    year int,
+    email nvarchar(100),
+    password nvarchar(100),
     createdAt datetime,
     updatedAt datetime
 );
@@ -41,6 +42,17 @@ create table if not exists company
 (
 	id int primary key,
     name nvarchar(100),
+    createdAt datetime,
+    updatedAt datetime
+);
+
+-- contact/company xref table
+create table if not exists contactxref
+(
+	id int primary key,
+    parentid int,
+    childid int,
+    level int,
     createdAt datetime,
     updatedAt datetime
 );
